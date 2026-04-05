@@ -9,11 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      
       - name: Install Foundry
-        run: |
-         curl -L https://foundry.paradigm.xyz | bash
-         ~/.foundry/bin/foundryup
-         echo "$HOME/.foundry/bin" >> $GITHUB_PATH
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Check forge
+        run: forge --version
 
       - name: Build
         run: forge build
